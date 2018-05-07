@@ -7,17 +7,14 @@ using std::make_pair;
 using std::map;
 using std::vector;
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(nullptr) {}
-};
+#include "common.h"
+typedef single_list_node ListNode;
 
 class Solution {
   public:
     ListNode *addTwoNumbers(const ListNode *l1, const ListNode *l2) {
-        ListNode *h = new ListNode(0);
-        ListNode *p = h;
+        ListNode *h = nullptr;
+        ListNode **p = &h;
         int c = 0;
         while (l1 != nullptr || l2 != nullptr) {
             if (l1 != nullptr) {
@@ -28,47 +25,26 @@ class Solution {
                 c += l2->val;
                 l2 = l2->next;
             }
-            p->next = new ListNode(c % 10);
-            p = p->next;
+            *p = new ListNode(c % 10);
+            p = &((*p)->next);
             c = c >= 10 ? 1 : 0;
         }
         if (c > 0) {
-            p->next = new ListNode(c);
+            *p = new ListNode(c);
         }
-        p = h->next;
-        delete h;
-        return p;
+        return h;
     }
 };
 
-static ListNode *build_list(const vector<int> xx) {
-    ListNode *h = new ListNode(0);
-    ListNode *p = h;
-    for (auto x : xx) {
-        p->next = new ListNode(x);
-        p = p->next;
-    }
-    p = h->next;
-    delete h;
-    return p;
-}
-
-static void print_list(ListNode *p) {
-    while (p != nullptr) {
-        cout << p->val << " ";
-        p = p->next;
-    }
-    cout << "\n";
-}
 
 static void test() {
     Solution sol;
     {
-        vector<int> x1{5, 3, 4};
-        vector<int> x2{7, 5, 6};
-        auto l1 = build_list(x1);
-        auto l2 = build_list(x2);
+        vector<int> x1{5, 3, 4, 3, 4, 6, 7};
+        vector<int> x2{7, 5, 6, 7, 5, 3, 3, 9};
+        auto l1 = build_single_list(x1);
+        auto l2 = build_single_list(x2);
         auto y = sol.addTwoNumbers(l1, l2);
-        print_list(y);
+        print_single_list(y);
     }
 }
