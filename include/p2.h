@@ -8,7 +8,7 @@ using std::map;
 using std::vector;
 
 #include "common.h"
-typedef single_list_node ListNode;
+typedef single_list_node<int> ListNode;
 
 class Solution {
   public:
@@ -42,9 +42,9 @@ static void test() {
     {
         vector<int> x1{5, 3, 4, 3, 4, 6, 7};
         vector<int> x2{7, 5, 6, 7, 5, 3, 3, 9};
-        auto l1 = build_single_list(x1);
-        auto l2 = build_single_list(x2);
+        auto l1 = ListNode::build(x1);
+        auto l2 = ListNode::build(x2);
         auto y = sol.addTwoNumbers(l1, l2);
-        print_single_list(y);
+        cout << ListNode::to_string(y) << "\n";
     }
 }

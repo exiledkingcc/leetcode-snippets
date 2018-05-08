@@ -11,7 +11,7 @@ using std::vector;
 using std::pair;
 
 #include "common.h"
-typedef single_list_node ListNode;
+typedef single_list_node<int> ListNode;
 
 class Solution {
   public:
@@ -68,9 +68,9 @@ static void test() {
         {{1, 1, 2, 3}, {5, 8, 13}},
     };
     for (auto x : xx) {
-        auto l1 = build_single_list(x.first);
-        auto l2 = build_single_list(x.second);
+        auto l1 = ListNode::build(x.first);
+        auto l2 = ListNode::build(x.second);
         auto y = sol.mergeTwoLists(l1, l2);
-        print_single_list(y);
+        cout << ListNode::to_string(y) << "\n";
     }
 }
