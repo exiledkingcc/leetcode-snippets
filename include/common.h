@@ -30,4 +30,21 @@ template <typename T> struct single_list_node {
     }
 };
 
+
+template<typename T>
+std::string vector_to_string(std::vector<T> vv) {
+    int n = vv.size();
+    if (n == 0) {
+        return "[]";
+    }
+    std::stringstream ss;
+    ss << "[";
+    for (int i = 0; i <= n - 2; ++i) {
+        ss << vv[i] << ", ";
+    }
+    ss << vv.back() << "]";
+    return ss.str();
+}
+
+
 #endif // !_COMMON_H_
