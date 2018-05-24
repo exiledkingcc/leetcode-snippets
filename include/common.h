@@ -32,18 +32,18 @@ template <typename T> struct single_list_node {
 
 
 template<typename T>
-std::string vector_to_string(std::vector<T> vv) {
+std::ostream& operator<<(std::ostream& out, std::vector<T> vv) {
     int n = vv.size();
     if (n == 0) {
-        return "[]";
+        out << "[]";
+        return out;
     }
-    std::stringstream ss;
-    ss << "[";
+    out << "[";
     for (int i = 0; i <= n - 2; ++i) {
-        ss << vv[i] << ", ";
+        out << vv[i] << ", ";
     }
-    ss << vv.back() << "]";
-    return ss.str();
+    out << vv.back() << "]";
+    return out;
 }
 
 
