@@ -48,6 +48,6 @@ static void test() {
     };
     for (auto x : xx) {
         auto y = sol.searchInsert(x.first, x.second);
-        cout << vector_to_string(x.first) << ", " << x.second << " => " << y << "\n";
+        cout << x.first << ", " << x.second << " => " << y << "\n";
     }
 }

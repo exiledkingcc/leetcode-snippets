@@ -41,6 +41,6 @@ static void test() {
     };
     for (auto x: xx) {
         auto y = sol.maxSubArray(x);
-        cout << vector_to_string(x) << " => " << y << "\n";
+        cout << x << " => " << y << "\n";
     }
 }
