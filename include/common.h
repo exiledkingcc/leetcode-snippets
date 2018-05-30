@@ -21,15 +21,15 @@ template <typename T> struct single_list_node {
 
     static std::string to_string(single_list_node *p) {
         std::stringstream ss;
+        ss << "{ ";
         while (p != nullptr) {
-            ss << p->val << " -> ";
+            ss << p->val << "->";
             p = p->next;
         }
-        ss << "null";
+        ss << "null }";
         return ss.str();
     }
 };
-
 
 template<typename T>
 std::ostream& operator<<(std::ostream& out, std::vector<T> vv) {
